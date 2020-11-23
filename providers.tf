@@ -4,7 +4,7 @@ terraform {
 
 provider "aws" {
   version = "3.16.0"
-  region  = var.aws_config.region
+  region  = var.aws_region
 }
 
 provider "google" {
