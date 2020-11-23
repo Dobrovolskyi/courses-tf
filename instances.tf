@@ -26,6 +26,6 @@ resource "aws_instance" "web_iter" {
   instance_type = "t2.micro"
   region        = [for reg in var.aws_regions : reg]
   tags = {
-    Name = "HelloWorld-${reg.key}"
+    Name = "HelloWorld-${reg}"
   }
 }
