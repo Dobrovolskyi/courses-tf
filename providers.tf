@@ -3,8 +3,9 @@ terraform {
 }
 
 provider "aws" {
-  version = "3.16.0"
-  region  = var.aws_config.region
+  version       = "3.16.0"
+  region        = var.aws_config.region
+  instance_type = var.aws_config.instance_type
 }
 
 provider "google" {

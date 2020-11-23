@@ -14,8 +14,8 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami = data.aws_ami.ubuntu.id
+  #instance_type = "t2.micro"
   tags = {
     Name = "HelloWorld-defaultReg"
   }
@@ -24,10 +24,10 @@ resource "aws_instance" "web" {
 resource "aws_instance" "web_iter" {
   for_each = toset(var.aws_regions)
 
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  #region        = each.value
+  ami = data.aws_ami.ubuntu.id
+  #instance_type = "t2.micro"
+  region = each.key
   tags = {
-    Name = "HelloWorld-${each.key}"
+    Name = "HelloWorld-${each.value}"
   }
 }
