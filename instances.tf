@@ -26,7 +26,6 @@ resource "aws_instance" "web_iter" {
 
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  region        = each.key
   tags = {
     Name = "HelloWorld-${each.value}"
   }
