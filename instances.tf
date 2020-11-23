@@ -27,6 +27,6 @@ resource "aws_instance" "web_iter" {
   region        = each.value
   instance_type = "t2.micro"
   tags = {
-    Name = "HelloWorld-${each.index}"
+    Name = "HelloWorld-${each.key}"
   }
 }
