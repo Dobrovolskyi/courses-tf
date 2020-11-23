@@ -1,10 +1,4 @@
-variable "aws_config" {
-  type = string
-  default = {
-    region        = "eu-central-1"
-    instance_type = "t2.micro"
-  }
-}
+variable "aws_region" {}
 
 variable "aws_regions" {
   description = "The list of AWS regions we want to work with"
