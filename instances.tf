@@ -22,10 +22,12 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_instance" "web_iter" {
+  for_each = toset(var.aws_regions)
+
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  region        = [for reg in var.aws_regions : reg]
+  region        = each.value
   tags = {
-    Name = "HelloWorld"
+    Name = "HelloWorld-${each.key}"
   }
 }
