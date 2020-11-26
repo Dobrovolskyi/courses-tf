@@ -62,7 +62,7 @@ resource "google_compute_instance_template" "tf-instance" {
 
   // Create a new boot disk from an image
   disk {
-    source_image = "ubuntu-minimal-2004-focal-v20201028"
+    source_image = "ubuntu-minimal-2004-lts"
     auto_delete  = true
     boot         = true
   }
