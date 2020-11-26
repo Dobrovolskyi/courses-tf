@@ -44,7 +44,7 @@ resource "google_compute_instance_template" "tf-instance" {
   name        = "appserver-1"
   description = "first app server instances."
 
-  tags = ["app", "DevOpsCourse"]
+  tags = ["app", "devopscourse"]
 
   labels = {
     environment = "dev"
