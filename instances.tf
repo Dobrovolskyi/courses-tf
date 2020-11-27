@@ -40,30 +40,27 @@ resource "aws_instance" "web_iter" {
 #                         Google Cloud Platform
 #=========================================================================
 
-resource "google_compute_instance_template" "tf-instance" {
-  name        = "appserver-1"
-  description = "first app server instances."
+resource "google_compute_instance" "tf-instance" {
+  name         = "appserver-1"
+  machine_type = "e2-micro"
+  zone         = "us-central1-a"
 
-  tags = ["app", "devopscourse"]
+  tags = ["app", "devopscourse"] # lowercase letters only
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-9"
+    }
+  }
 
   labels = {
     environment = "dev"
     service     = "app-server"
   }
 
-  instance_description = "minimal instance"
-  machine_type         = "e2-micro"
-  can_ip_forward       = false
-
   scheduling {
     automatic_restart   = true
     on_host_maintenance = "MIGRATE"
-  }
-
-  // Create a new boot disk from an image
-  disk {
-    auto_delete  = true
-    boot         = true
   }
 
   network_interface {
